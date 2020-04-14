@@ -7,6 +7,9 @@
     <groupId>com.codeages</groupId>
     <artifactId>generate-bin</artifactId>
     <version>${project.version}</version>
+    <name>generate-bin</name>
+    <description>generate bin from template</description>
+    <url>https://github.com/spring-skeleton/generate-bin</url>
 
     <packaging>maven-plugin</packaging>
 
@@ -54,7 +57,6 @@
         <tag>${project.version}</tag>
     </scm>
 
-
     <!--发布到maven仓库-->
     <distributionManagement>
         <repository>
@@ -83,6 +85,21 @@
                 <artifactId>maven-plugin-plugin</artifactId>
                 <version>3.6.0</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>

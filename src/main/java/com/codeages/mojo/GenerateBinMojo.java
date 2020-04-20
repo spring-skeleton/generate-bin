@@ -20,9 +20,8 @@ public class GenerateBinMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
             String[] files = new String[] {"start.sh", "stop.sh"};
-            String folder = projectBuildDir + File.separator + projectName+File.separator+"bin";
+            String folder = projectBuildDir + File.separator + projectName + File.separator + "bin";
             for (String fileName:files) {
-                File newFile = createFile(folder, fileName);
                 String resoureName = "/bin_template/"+fileName;
 
                 InputStream is = getClass().getResourceAsStream(resoureName);
@@ -41,6 +40,8 @@ public class GenerateBinMojo extends AbstractMojo {
                     command = MessageFormat.format(sb.toString(), projectName);
                 }
 
+                File newFile = createFile(folder, fileName);
+                newFile.setExecutable(true);
                 FileOutputStream fileOutputStream = new FileOutputStream(newFile);
                 fileOutputStream.write(command.getBytes());
                 fileOutputStream.close();

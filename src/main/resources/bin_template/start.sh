@@ -15,4 +15,4 @@ else
   Xmx=$2
 fi
 
-java -server -Dspring.profiles.active=prod -Xmx$Xmx -Xms$Xms -Dfile.encoding=UTF-8 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=../heapdump$currentTime.hprof -jar ../{0}.jar
+java -server -Dspring.profiles.active=prod -Xmx$Xmx -Xms$Xms -Dfile.encoding=UTF-8 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=../heapdump$currentTime.hprof -jar ../{0}.jar &
